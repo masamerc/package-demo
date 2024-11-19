@@ -11,6 +11,8 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o /bin/server .
 
 FROM alpine:latest AS final
 
+# add an unprivileged user for security best practices
+# https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#user
 ARG UID=1001
 RUN adduser \
     --disabled-password \
